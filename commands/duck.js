@@ -5,7 +5,12 @@ module.exports = {
   description: "search duckduckgo",
   execute: async function execute(msg, args) {
     if (!args[0]) return msg.reply("Хайх утгаа бичээрэй");
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+  ],
+});
     const page = await browser.newPage();
     await page.goto("https://duckduckgo.com/", { waitUntil: "networkidle2" });
     await page.type("#search_form_input_homepage", args.join(" "));
