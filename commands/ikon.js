@@ -9,7 +9,7 @@ module.exports = {
     if (args[0] && args[0] > 20) return msg.reply("Тийм олон мэдээлэл оруулахгүй");
     if (args[0] && args[0] < 1) return msg.reply("Тоглоод байна уу");
     const browser = await puppeteer.launch({
-  'args': [
+  args: [
     '--no-sandbox',
     '--disable-setuid-sandbox',
   ],
