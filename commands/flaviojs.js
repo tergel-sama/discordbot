@@ -8,7 +8,12 @@ module.exports = {
     if (args[0] && args[0] > 100)
       return msg.reply("Тийм олон мэдээлэл оруулахгүй");
     if (args[0] && args[0] < 1) return msg.reply("Тоглоод байна уу");
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+  ],
+});
     const page = await browser.newPage();
     await page.goto("https://flaviocopes.com/tags/js/", {
       waitUntil: "networkidle2",
