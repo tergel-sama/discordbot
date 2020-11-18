@@ -4,7 +4,7 @@ const fs = require("fs");
 const {  prefix } = require("./config.json");
 client.commands = new Discord.Collection();
 const commandFiles = fs
-  .readdirSync("./commands")
+  .readdirSync("/app/commands")
   .filter((file) => file.endsWith(".js"));
 client.login(process.env.token);
 
