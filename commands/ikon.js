@@ -8,7 +8,12 @@ module.exports = {
     if (args[0] && isNaN(args[0])) return msg.reply("Тоо оруулаарай");
     if (args[0] && args[0] > 20) return msg.reply("Тийм олон мэдээлэл оруулахгүй");
     if (args[0] && args[0] < 1) return msg.reply("Тоглоод байна уу");
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+  ],
+});
     const page = await browser.newPage();
     await page.goto("https://ikon.mn/", { waitUntil: "networkidle2" });
     const data = await page.$$eval(".nldesc>.nltitle>a", (anchor) => {
