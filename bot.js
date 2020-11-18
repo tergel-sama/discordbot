@@ -15,7 +15,7 @@ function readyDiscord() {
 }
 
 for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
+  const command = require(`/app/commands/${file}`);
   client.commands.set(command.name, command);
 }
 
