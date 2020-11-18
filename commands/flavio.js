@@ -4,7 +4,12 @@ module.exports = {
   name: "flavio",
   description: "Flavio!",
   execute: async function execute(msg, args) {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+  ],
+});
     const page = await browser.newPage();
     await page.goto("https://flaviocopes.com/");
 
